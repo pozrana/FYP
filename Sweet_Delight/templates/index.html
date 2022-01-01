@@ -222,24 +222,23 @@
         </div>
         <!-- end of title -->
         <div class = "menu-row">
-
+          {% for menu in menus %}
           <div class = "menu-col-1">
             <div class = "menu-item">
               <div class = "menu-img">
-                <img src = "{% static 'assets/images/cake.jpg' %}" alt = "">
+                <img src = "{{menu.img.url}}" alt = "">
               </div>
               <div class = "menu-text">
                 <div class = "price">
-                  <h3>Birthday Cake</h3>
-                  <h3>Rs 1000</h3>
+                  <h3>{{menu.item_name}}</h3>
+                  <h3>Rs {{menu.price}}</h3>
                 </div>
-                <p class = "text">Ingredients: Strawberries, Flour, sugar, egg, baking powder, vanilla, salt</p>
+                <p class = "text">{{menu.desc}}</p>
                 <a href = "#">Order Now</a>
               </div>
             </div>
-
           </div>
-          
+          {% endfor %}
         </div>
       </div>
     </section>
