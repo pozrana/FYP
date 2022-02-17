@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/login-style.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login-style.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -23,10 +24,10 @@
 
       <div class="social-media">
         <ul>
-          <li><img src="assets/images/facebook.png"></li>
-          <li><img src="assets/images/twitter.png"></li>
-          <li><img src="assets/images/linkedin.png"></li>
-          <li><img src="assets/images/instagram.png"></li>
+          <li><img src="{% static 'assets/images/facebook.png' %}"></li>
+          <li><img src="{% static 'assets/images/twitter.png' %}"></li>
+          <li><img src="{% static 'assets/images/linkedin.png' %}"></li>
+          <li><img src="{% static 'assets/images/instagram.png' %}"></li>
         </ul>
       </div>
     </div>
@@ -68,6 +69,6 @@
       </div>
     </div>
   </div>
-<script type="text/javascript" src="js/login-script.js"></script>
+<script type="text/javascript" src="{% static 'js/login-script.js' %}"></script>
 </body>
 </html>

@@ -13,3 +13,6 @@ class FoodMenu(models.Model):
 
     def __str__(self) -> str:
         return self.item_name
+
+class ImageGallery(models.Model):
+    gallery_img = models.ImageField(upload_to = 'pics')         

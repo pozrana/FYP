@@ -13,6 +13,10 @@
     <link rel = "stylesheet" href = "{% static 'assets/font-awesome/all.css' %}">
     <!-- custom style css -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- my custom style css -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Dokdo" rel="stylesheet">
   </head>
   <body>
 
@@ -36,7 +40,7 @@
             <ul class = "navbar-nav">
               <li><a  href = "#home">Home</a></li>
               <li><a  href = "#about">About</a></li>
-              <li><a  href = "#service">Event</a></li>
+              <li><a  href = "#event">Event</a></li>
               <li><a  href = "#openings">Openings</a></li>
               <li><a  href = "#menu">Menu</a></li>
               <li><a  href = "#gallery">Gallery</a></li>
@@ -134,14 +138,14 @@
     <!-- end of about section -->
 
     <!-- service section -->
-    <section class = "padding-y service" id = "#service">
+    <section class = "padding-y service" id = "#event">
       <div class = "container">
         <!-- title -->
         <div class = "title">
           <h2>Special Events</h2>
           <div class = "line center">
             <div></div>
-            <span><i class="fas fa-wine-bottle    "></i></span>
+            <span><i class="fas fa-wine-bottle"></i></span>
             <div></div>
           </div>
         </div>
@@ -185,7 +189,7 @@
           <h2>Openings Hour</h2>
           <div class = "line center">
             <div></div>
-            <span><i class="fas fa-clock    " aria-hidden="true"></i></span>
+            <span><i class="fas fa-clock" aria-hidden="true"></i></span>
             <div></div>
           </div>
         </div>
@@ -248,42 +252,35 @@
     <!-- gallery section -->
     <section class = "padding-y gallery" id = "#gallery">
       <div class = "container">
+        <!-- title -->
         <div class = "title">
           <h2>Some pictures from our cafe</h2>
           <div class = "line center">
             <div></div>
-            <span><i class="fas fa-images    " aria-hidden="true"></i></span>
+            <span><i class="fas fa-images" aria-hidden="true"></i></span>
             <div></div>
           </div>
         </div>
+        <!-- end of title -->
+        <div class = "img-col-1">
 
-        <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
-          <div class="row g-0">
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="{% static 'assets/images/coffee.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
-                  <img src="{% static 'assets/images/coffee.jpg' %}" alt="" class="img-fluid">
-                </a>
-              </div>
+          <div class = "gallery-row">
+            {% for gallery in galleries %}
+            <div class= "box">
+              <img src="{{gallery.gallery_img.url}}" width="600" height="400" border-radius = "4px";>
             </div>
-  
-            <div class="col-lg-3 col-md-4">
-              <div class="gallery-item">
-                <a href="{% static 'assets/images/coffee.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
-                  <img src="{% static 'assets/images/coffee.jpg' %}" alt="" class="img-fluid">
-                </a>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
-
+          
       </div>
 
     </section>
 
 
+
     <!-- contact section -->
-    <section class = "padding-y contact" id = "#contact">
+    <section class = "padding-y contact" id = "#contact"> 
       <div class = "container">
         <!-- title -->
         <div class = "title">

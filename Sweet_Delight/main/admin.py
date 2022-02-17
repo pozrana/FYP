@@ -1,5 +1,6 @@
 from django.contrib import admin
-from . models import FoodMenu
+from . models import FoodMenu, ImageGallery
+
 
 # re
 
@@ -9,3 +10,4 @@ from . models import FoodMenu
 #we call this method and passing models class as a argument
 
 admin.site.register(FoodMenu)
+admin.site.register(ImageGallery)
