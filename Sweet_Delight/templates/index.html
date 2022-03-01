@@ -22,18 +22,16 @@
 
     <!-- header -->
     <header>
-
+      
      <!-- navbar -->
       <nav class = "navbar">
         <div class = "container">
           <div class = "brand-and-toggler">
-            <a href = "index.html" class = "navbar-brand">
+            <a class = "navbar-brand">
               <img src = "{% static 'assets/images/logo.png' %}" alt = "logo">
               <h2>Sweet Delight</h2>
             </a>
-            <button type = "button" id = "navbar-toggler">
-              <i class = "fas fa-bars"></i>
-            </button>
+            
           </div>
 
           <div class = "navbar-collapse">
@@ -72,16 +70,18 @@
     <!-- end of header -->
 
     <!-- banner section -->
-      <section class = "banner" id= "#home" >
+      <section class = "banner" id= "home" >
         <ul class = "banner-slider">
 
           <li class = "banner-item activate-banner">
             <div class = "container">
               <h1>Welcome to Sweet Delight</h1>
-              <p class= "text">Delicious, gourmet desserts & more. Delivered right to your door, fast! Indulge today with delicious desserts, including macarons, cakes, pies, and more.</p>
-              <Button type = "button"> Our Menu </Button>
-              <Button type = "button"> Order Now </Button>
-              <Button type = "button"> Book Table </Button>
+              <p class = "text">Delicious, gourmet desserts & more. Delivered right to your door, fast! Indulge today with delicious desserts, including macarons, cakes, pies, and more.</p>
+                <Button type = "button"> Order Now </Button>
+              </a>
+              <a href="booking.html">
+                <Button type = "button"> Book Event </Button>
+              </a>
             </div>
           </li>
 
@@ -89,19 +89,26 @@
             <div class = "container">
               <h1>Quality baked good</h1>
               <p class = "text">Desire a beautiful cake or an awesome party dessert? Our Signature Cakes promises a delicious experiance.</p>
-              <Button type = "button"> Our Menu </Button>
-              <Button type = "button"> Order Now </Button>
-              <Button type = "button"> Book Table </Button>
+              <a href="#menu">
+                <Button type = "button"> Order Now </Button>
+              </a>
+              <a href="booking.html">
+                <Button type = "button"> Book Event </Button>
+              </a>
             </div>
           </li>
 
           <li class = "banner-item activate-banner">
             <div class = "container">
               <h1>A companion to your happiness</h1>
-              <p class = "text">Try our elegent line of delicate Pastries which are creamy, rich and a joy to eat!</p>
-              <Button type = "button"> Our Menu </Button>
-              <Button type = "button"> Order Now </Button>
-              <Button type = "button"> Book Table </Button>
+              <p class= "text">Try our elegent line of delicate Pastries which are creamy, rich and a joy to eat!</p>
+              <a href="#menu">
+              <a href="#menu">
+                <Button type = "button"> Order Now </Button>
+              </a>
+              <a href="booking.html">
+                <Button type = "button"> Book Event </Button>
+              </a>
             </div>
           </li>
         </ul>
@@ -109,7 +116,7 @@
     <!-- end of banner section -->
 
     <!-- about section -->
-    <section class = "padding-y about" id = "#about">
+    <section class = "padding-y about" id = "about">
       <div class = "container">
         <div class = "about-row">
           <div class = "about-col-1">
@@ -126,7 +133,7 @@
               </div>
             </div>
             <!-- end of title -->
-            <p class = "text">Sweet Delight is a seasonal cafe and marketplace featuring fresh baked goods in Pokhara, Nepal run by Pastry Chef/Baker Roxana Jullapat and Chef Daniel Mattern. Longtime champions of produce-driven cooking, Jullapat and Mattern built their careers over fifteen years in renowned kitchens of Kathmandu including AOC, Lucques, Campanile, and Cooks County before opening Sweet Delight.</p>
+            <p class = "text">Sweet Delight is a seasonal cafe and marketplace featuring fresh baked goods in Pokhara, Nepal run by Pastry Chef/Baker Max Jullapat and Chef Daniel Mattern. Longtime champions of produce-driven cooking, Jullapat and Mattern built their careers over fifteen years in renowned kitchens of Kathmandu including AOC, Lucques, Campanile, and Cooks County before opening Sweet Delight.</p>
             <p class = "text">At Sweet Delight, we are dedicated to all things seasonal with a market-driven day-time menu that also offers a variety of artisan breads and pastries made daily with locally-sourced, heirloom grains.</p>
           </div>
           <div class = "about-col-3">
@@ -138,7 +145,7 @@
     <!-- end of about section -->
 
     <!-- service section -->
-    <section class = "padding-y service" id = "#event">
+    <section class = "padding-y service" id = "event">
       <div class = "container">
         <!-- title -->
         <div class = "title">
@@ -182,7 +189,7 @@
 
 
     <!-- openings section -->
-    <section class = "openings padding-y" id = "#openings">
+    <section class = "openings padding-y" id = "openings">
       <div class = "container">
         <!-- title -->
         <div class = "title">
@@ -213,7 +220,7 @@
     <!-- end of openings section -->
 
     <!-- menu section -->
-    <section class = "padding-y menu" id = "#menu">
+    <section class = "padding-y menu" id = "menu">
       <div class = "container">
         <!-- title -->
         <div class = "title">
@@ -238,7 +245,7 @@
                   <h3>Rs {{menu.price}}</h3>
                 </div>
                 <p class = "text">{{menu.desc}}</p>
-                <a href = "#">Order Now</a>
+                <a href = "#cart">Add to cart</a>
               </div>
             </div>
           </div>
@@ -250,7 +257,7 @@
 
 
     <!-- gallery section -->
-    <section class = "padding-y gallery" id = "#gallery">
+    <section class = "padding-y gallery" id = "gallery">
       <div class = "container">
         <!-- title -->
         <div class = "title">
@@ -280,7 +287,7 @@
 
 
     <!-- contact section -->
-    <section class = "padding-y contact" id = "#contact"> 
+    <section class = "padding-y contact" id = "contact"> 
       <div class = "container">
         <!-- title -->
         <div class = "title">

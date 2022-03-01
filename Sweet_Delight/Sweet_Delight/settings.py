@@ -80,8 +80,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sweetdelightdb',
         'USER': 'root',
-        'PASSWORD':'root123',
-        'PORT': 3307,
+        'PASSWORD':'october25',
+        'PORT': 3306,
         'HOST': '127.0.0.1',
     }
 }

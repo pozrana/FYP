@@ -90,7 +90,7 @@ h1, h2, h3, h4, h5, h6{
     place-items: center;
     color: #fff;
     display: none;
-    animation: fadeIn 2s;
+    animation: fadeIn 1s;
 }
 @keyframes fadeIn{
     from{opacity: 0;}

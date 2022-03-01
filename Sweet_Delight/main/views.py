@@ -9,7 +9,10 @@ def index(request):
     return render(request, 'index.html', {'menus': menus, 'galleries': galleries})
 
 def login(request):
-    return render(request, 'login.html')    
+    return render(request, 'login.html')
+
+def booking(request):
+    return render(request, 'booking.html')        
 
     
 
