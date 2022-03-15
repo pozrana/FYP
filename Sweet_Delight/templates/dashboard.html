@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- google fonts -->
+    <link rel = "stylesheet" href = "{% static 'assets/fonts/font.css' %}">
+    <!-- Fontawesome js -->
+    <link rel = "stylesheet" href = "{% static 'assets/font-awesome/all.css' %}">
+    <!-- custom style css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- my custom style css -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Dokdo" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- header -->
+    <header>
+      
+     <!-- navbar -->
+      <nav class = "navbar">
+        <div class = "container">
+          <div class = "brand-and-toggler">
+            <a class = "navbar-brand">
+              <img src = "{% static 'assets/images/logo.png' %}" alt = "logo">
+              <h2>Sweet Delight</h2>
+            </a>
+            <button type = "button" id = "navbar-toggler">
+              <i class = "fas fa-bars"></i>
+            </button>
+          </div>
+
+          <div class = "navbar-collapse">
+            <ul class = "navbar-nav">
+              <li><a  href = "/home/">Home</a></li>
+              <li><a  href = "/about/">About</a></li>
+              <li><a  href = "/services/">Event</a></li>
+              <li><a  href = "/opening/">Opening</a></li>
+              <li><a  href = "/menu/">Menu</a></li>
+              <li><a  href = "/gallery/">Gallery</a></li>
+              <li><a  href = "/contact/">Contact</a></li>
+
+              {% if user.is_authenticated %}
+              <li>Hello, {{user.username}}</li>
+              <li>
+                <a  href = "/logout/">
+                  <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                  
+                </a>
+              </li>
+
+              {% else %}
+              <li>
+                <a href = "/login/">
+                  <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              <li>
+                <a href = "cart/">
+                  <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href = "#notification">
+                  <i class="fa fa-bell" aria-hidden="true"></i>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- end of navbar -->
+
+    </header>
+
+    <!-- footer -->
+    <footer>
+      <p class = "text">Copyright & copy; Sweet Delight Website 2021.</p>
+    </footer>
+    <!-- end of footer -->
+      <div class = "container">
+          <!-- <p>Welcome to dashboard</p> -->
+      </div>
+      <script src = "{% static 'assets/jquery/jquery-3.5.1.js' %}"></script>
+      <!-- Fontawesome js -->
+      <script src = "{% static 'assets/font-awesome/all.js' %}"></script>
+      <!-- custom js file -->
+      <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

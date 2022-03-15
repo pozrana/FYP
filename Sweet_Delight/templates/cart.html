@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Add to cart</title>
+        <link rel="stylesheet" href="{% static 'css/reserve.css' %}">
+        <link rel = "stylesheet" href = "{% static 'assets/fonts/font.css' %}">
+    </head>
+    <body>
+        <div class = "menu-col-1">
+            <div class = "menu-item">
+              <div class = "menu-img">
+                <img src = "{{menu.img.url}}" alt = "">
+              </div>
+              <div class = "menu-text">
+                <div class = "price">
+                  <h3></h3>
+                  <h3>Rs {{menu.price}}</h3>
+                </div>
+                <p class = "text">{{menu.desc}}</p>
+                <a >Add to cart</a>
+              </div>
+            </div>
+          </div>
+    </body>
+</html>

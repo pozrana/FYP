@@ -19,8 +19,9 @@
                 </div>
 
                 <div class = "card-content">
-                    <h3>Reservation</h3>
-                    <form>
+                    <h3 style="color: #996633;">Make Reservation</h3>
+                    <form action="booking/" method="post">
+                        {% csrf_token %}
                         <div class = "form-row">
                             <select name = "month">
                                 <option value = "month-select">Month</option>
@@ -38,40 +39,9 @@
                                 <option value = "dec">Dec</option>
                             </select>
 
-                            <select name = "date">
-                                <option value = "date-select">Date</option>
-                                <option value = "1">1</option>
-                                <option value = "2">2</option>
-                                <option value = "3">3</option>
-                                <option value = "4">4</option>
-                                <option value = "5">5</option>
-                                <option value = "6">6</option>
-                                <option value = "7">7</option>
-                                <option value = "8">8</option>
-                                <option value = "9">9</option>
-                                <option value = "10">10</option>
-                                <option value = "11">11</option>
-                                <option value = "12">12</option>
-                                <option value = "13">13</option>
-                                <option value = "14">14</option>
-                                <option value = "15">15</option>
-                                <option value = "16">16</option>
-                                <option value = "17">17</option>
-                                <option value = "18">18</option>
-                                <option value = "19">19</option>
-                                <option value = "20">20</option>
-                                <option value = "21">21</option>
-                                <option value = "22">22</option>
-                                <option value = "23">23</option>
-                                <option value = "24">24</option>
-                                <option value = "25">25</option>
-                                <option value = "26">26</option>
-                                <option value = "27">27</option>
-                                <option value = "28">28</option>
-                                <option value = "29">29</option>
-                                <option value = "30">30</option>
-                                <option value = "31">31</option>
-                            </select>
+                            <div class = "form-row">
+                                <input type = "number" name="date" placeholder="Date" min = "1">
+                            </div>
                         </div>
 
                         <div class = "form-row">
@@ -86,7 +56,7 @@
                                 <option value = "10">22: 00</option>
                             </select>
 
-                            <select name = "type">
+                            <select name = "event">
                                 <option value = "day-select">Event Type</option>
                                 <option value = "wedding">Wedding</option>
                                 <option value = "birthday">Birthday</option>
@@ -97,14 +67,17 @@
                         </div>
 
                         <div class = "form-row">
-                            <input type = "text" placeholder="Full Name">
-                            <input type = "text" placeholder="Phone Number">
+                            <input type = "text" name="fullname" placeholder="Full Name">
+                            <input type = "text" name="mobile" placeholder="Phone Number">
                         </div>
 
                         <div class = "form-row">
-                            <input type = "number" placeholder="How Many Persons?" min = "1">
+                            <input type = "number" name="people" placeholder="How Many Persons?" min = "1">
                             <input type = "submit" value = "BOOK EVENT">
                         </div>
+                        {% for message in messages %}
+                        <label>{{message}}</label>
+                        {% endfor %}
                     </form>
                 </div>
             </div>

@@ -1,373 +1,291 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- google fonts -->
-    <link rel = "stylesheet" href = "{% static 'assets/fonts/font.css' %}">
-    <!-- Fontawesome js -->
-    <link rel = "stylesheet" href = "{% static 'assets/font-awesome/all.css' %}">
-    <!-- custom style css -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- my custom style css -->
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Dokdo" rel="stylesheet">
-  </head>
-  <body>
 
-    <!-- header -->
-    <header>
-      
-     <!-- navbar -->
-      <nav class = "navbar">
-        <div class = "container">
-          <div class = "brand-and-toggler">
-            <a class = "navbar-brand">
-              <img src = "{% static 'assets/images/logo.png' %}" alt = "logo">
-              <h2>Sweet Delight</h2>
-            </a>
-            
-          </div>
-
-          <div class = "navbar-collapse">
-            <ul class = "navbar-nav">
-              <li><a  href = "#home">Home</a></li>
-              <li><a  href = "#about">About</a></li>
-              <li><a  href = "#event">Event</a></li>
-              <li><a  href = "#openings">Openings</a></li>
-              <li><a  href = "#menu">Menu</a></li>
-              <li><a  href = "#gallery">Gallery</a></li>
-              <li><a  href = "#contact">Contact</a></li>
-              
-              <li>
-                <a href = "login.html">
-                  <i class="fa fa-user" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href = "#cart">
-                  <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href = "#notification">
-                  <i class="fa fa-bell" aria-hidden="true"></i>
-                </a>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- end of navbar -->
-
-    </header>
-    <!-- end of header -->
-
+    {% block content %}
     <!-- banner section -->
-      <section class = "banner" id= "home" >
-        <ul class = "banner-slider">
+    <section class = "banner" id= "home" >
+      <ul class = "banner-slider">
 
-          <li class = "banner-item activate-banner">
-            <div class = "container">
-              <h1>Welcome to Sweet Delight</h1>
-              <p class = "text">Delicious, gourmet desserts & more. Delivered right to your door, fast! Indulge today with delicious desserts, including macarons, cakes, pies, and more.</p>
-                <Button type = "button"> Order Now </Button>
-              </a>
-              <a href="booking.html">
-                <Button type = "button"> Book Event </Button>
-              </a>
-            </div>
-          </li>
+        <li class = "banner-item activate-banner">
+          <div class = "container">
+            <h1>Welcome to Sweet Delight</h1>
+            <p class = "text">Delicious, gourmet desserts & more. Delivered right to your door, fast! Indulge today with delicious desserts, including macarons, cakes, pies, and more.</p>
+              <Button type = "button"> Order Now </Button>
+            </a>
+            <a href="booking/">
+              <Button type = "button"> Book Event </Button>
+            </a>
+          </div>
+        </li>
 
-          <li class = "banner-item activate-banner">
-            <div class = "container">
-              <h1>Quality baked good</h1>
-              <p class = "text">Desire a beautiful cake or an awesome party dessert? Our Signature Cakes promises a delicious experiance.</p>
-              <a href="#menu">
-                <Button type = "button"> Order Now </Button>
-              </a>
-              <a href="booking.html">
-                <Button type = "button"> Book Event </Button>
-              </a>
-            </div>
-          </li>
+        <li class = "banner-item activate-banner">
+          <div class = "container">
+            <h1>Quality baked good</h1>
+            <p class = "text">Desire a beautiful cake or an awesome party dessert? Our Signature Cakes promises a delicious experiance.</p>
+            <a href="#menu">
+              <Button type = "button"> Order Now </Button>
+            </a>
+            <a href="booking/">
+              <Button type = "button"> Book Event </Button>
+            </a>
+          </div>
+        </li>
 
-          <li class = "banner-item activate-banner">
-            <div class = "container">
-              <h1>A companion to your happiness</h1>
-              <p class= "text">Try our elegent line of delicate Pastries which are creamy, rich and a joy to eat!</p>
-              <a href="#menu">
-              <a href="#menu">
-                <Button type = "button"> Order Now </Button>
-              </a>
-              <a href="booking.html">
-                <Button type = "button"> Book Event </Button>
-              </a>
+        <li class = "banner-item activate-banner">
+          <div class = "container">
+            <h1>A companion to your happiness</h1>
+            <p class= "text">Try our elegent line of delicate Pastries which are creamy, rich and a joy to eat!</p>
+            <a href="#menu">
+            <a href="#menu">
+              <Button type = "button"> Order Now </Button>
+            </a>
+            <a href="booking/">
+              <Button type = "button"> Book Event </Button>
+            </a>
+          </div>
+        </li>
+      </ul>
+   </section>
+  <!-- end of banner section -->
+
+  <!-- about section -->
+  <section class = "padding-y about" id = "about">
+    <div class = "container">
+      <div class = "about-row">
+        <div class = "about-col-1">
+          <img src = "{% static 'assets/images/about-img-1.jpg' %}" alt = "">
+        </div>
+        <div class = "about-col-2">
+          <!-- title -->
+          <div class = "title">
+            <h2>About Sweet Delight</h2>
+            <div class = "line center">
+              <div></div>
+              <span><i class="fa fa-coffee" aria-hidden="true"></i></span>
+              <div></div>
             </div>
-          </li>
+          </div>
+          <!-- end of title -->
+          <p class = "text">Sweet Delight is a seasonal cafe and marketplace featuring fresh baked goods in Pokhara, Nepal run by Pastry Chef/Baker Max Jullapat and Chef Daniel Mattern. Longtime champions of produce-driven cooking, Jullapat and Mattern built their careers over fifteen years in renowned kitchens of Kathmandu including AOC, Lucques, Campanile, and Cooks County before opening Sweet Delight.</p>
+          <p class = "text">At Sweet Delight, we are dedicated to all things seasonal with a market-driven day-time menu that also offers a variety of artisan breads and pastries made daily with locally-sourced, heirloom grains.</p>
+        </div>
+        <div class = "about-col-3">
+          <img src = "{% static 'assets/images/about-img-2.jpg' %}" alt = "">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end of about section -->
+
+  <!-- service section -->
+  <section class = "padding-y service" id = "services">
+    <div class = "container">
+      <!-- title -->
+      <div class = "title">
+        <h2>Special Events</h2>
+        <div class = "line center">
+          <div></div>
+          <span><i class="fas fa-wine-bottle"></i></span>
+          <div></div>
+        </div>
+      </div>
+      <!-- end of title -->
+      <div class = "service-row">
+        <div class = "service-item">
+          <span>
+            <i class = "fas fa-birthday-cake"></i>
+          </span>
+          <h3>Birthday Party</h3>
+          <p class = "text"></p>
+        </div>
+
+        <div class = "service-item">
+          <span>
+            <i class = "fas fa-glass-cheers"></i>
+          </span>
+          <h3>Wedding Party</h3>
+          <p class = "text"></p>
+        </div>
+
+        <div class = "service-item">
+          <span>
+            <i class = "fas fa-pizza-slice"></i>
+          </span>
+          <h3>Business Events</h3>
+          <p class = "text"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end of service section -->
+
+
+
+  <!-- openings section -->
+  <section class = "openings padding-y" id = "openings">
+    <div class = "container">
+      <!-- title -->
+      <div class = "title">
+        <h2>Openings Hour</h2>
+        <div class = "line center">
+          <div></div>
+          <span><i class="fas fa-clock" aria-hidden="true"></i></span>
+          <div></div>
+        </div>
+      </div>
+      <!-- end of title -->
+      <div class = "openings-row">
+        <p class = "text">We are open for 7 days a week</p>
+        <h3></h3>
+        <ul>
+          <li>Lakeside, Baidam-6 Pokhara</li>
+          <li>Kaski, Nepal 33700</li>
+          <li>Contact: +977-061-590999</li>
+          <li>Email: sweetdelight@gmail.com</li>
+          <li>Monday - Friday</li>
+          <li>7:00 AM to 9:00 PM</li>
+          <li>Saturday - Sunday</li>
+          <li>8:00 AM to 10:00 PM</li>
         </ul>
-     </section>
-    <!-- end of banner section -->
+      </div>
+    </div>
+  </section>
+  <!-- end of openings section -->
 
-    <!-- about section -->
-    <section class = "padding-y about" id = "about">
-      <div class = "container">
-        <div class = "about-row">
-          <div class = "about-col-1">
-            <img src = "{% static 'assets/images/about-img-1.jpg' %}" alt = "">
-          </div>
-          <div class = "about-col-2">
-            <!-- title -->
-            <div class = "title">
-              <h2>About Sweet Delight</h2>
-              <div class = "line center">
-                <div></div>
-                <span><i class="fa fa-coffee" aria-hidden="true"></i></span>
-                <div></div>
-              </div>
+  <!-- menu section -->
+  <section class = "padding-y menu" id = "menu">
+    <div class = "container">
+      <!-- title -->
+      <div class = "title">
+        <h2>Food Menu</h2>
+        <div class = "line center">
+          <div></div>
+          <span><i class = "fas fa-utensils"></i></span>
+          <div></div>
+        </div>
+      </div>
+      <!-- end of title -->
+      <div class = "menu-row">
+        {% for menu in menus %}
+        <div class = "menu-col-1">
+          <div class = "menu-item">
+            <div class = "menu-img">
+              <img src = "{{menu.img.url}}" alt = "">
             </div>
-            <!-- end of title -->
-            <p class = "text">Sweet Delight is a seasonal cafe and marketplace featuring fresh baked goods in Pokhara, Nepal run by Pastry Chef/Baker Max Jullapat and Chef Daniel Mattern. Longtime champions of produce-driven cooking, Jullapat and Mattern built their careers over fifteen years in renowned kitchens of Kathmandu including AOC, Lucques, Campanile, and Cooks County before opening Sweet Delight.</p>
-            <p class = "text">At Sweet Delight, we are dedicated to all things seasonal with a market-driven day-time menu that also offers a variety of artisan breads and pastries made daily with locally-sourced, heirloom grains.</p>
-          </div>
-          <div class = "about-col-3">
-            <img src = "{% static 'assets/images/about-img-2.jpg' %}" alt = "">
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end of about section -->
-
-    <!-- service section -->
-    <section class = "padding-y service" id = "event">
-      <div class = "container">
-        <!-- title -->
-        <div class = "title">
-          <h2>Special Events</h2>
-          <div class = "line center">
-            <div></div>
-            <span><i class="fas fa-wine-bottle"></i></span>
-            <div></div>
-          </div>
-        </div>
-        <!-- end of title -->
-        <div class = "service-row">
-          <div class = "service-item">
-            <span>
-              <i class = "fas fa-birthday-cake"></i>
-            </span>
-            <h3>Birthday Party</h3>
-            <p class = "text"></p>
-          </div>
-
-          <div class = "service-item">
-            <span>
-              <i class = "fas fa-glass-cheers"></i>
-            </span>
-            <h3>Wedding Party</h3>
-            <p class = "text"></p>
-          </div>
-
-          <div class = "service-item">
-            <span>
-              <i class = "fas fa-pizza-slice"></i>
-            </span>
-            <h3>Business Events</h3>
-            <p class = "text"></p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- end of service section -->
-
-
-
-    <!-- openings section -->
-    <section class = "openings padding-y" id = "openings">
-      <div class = "container">
-        <!-- title -->
-        <div class = "title">
-          <h2>Openings Hour</h2>
-          <div class = "line center">
-            <div></div>
-            <span><i class="fas fa-clock" aria-hidden="true"></i></span>
-            <div></div>
-          </div>
-        </div>
-        <!-- end of title -->
-        <div class = "openings-row">
-          <p class = "text">We are open for 7 days a week</p>
-          <h3></h3>
-          <ul>
-            <li>Lakeside, Baidam-6 Pokhara</li>
-            <li>Kaski, Nepal 33700</li>
-            <li>Contact: +977-061-590999</li>
-            <li>Email: sweetdelight@gmail.com</li>
-            <li>Monday - Friday</li>
-            <li>7:00 AM to 9:00 PM</li>
-            <li>Saturday - Sunday</li>
-            <li>8:00 AM to 10:00 PM</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <!-- end of openings section -->
-
-    <!-- menu section -->
-    <section class = "padding-y menu" id = "menu">
-      <div class = "container">
-        <!-- title -->
-        <div class = "title">
-          <h2>Food Menu</h2>
-          <div class = "line center">
-            <div></div>
-            <span><i class = "fas fa-utensils"></i></span>
-            <div></div>
-          </div>
-        </div>
-        <!-- end of title -->
-        <div class = "menu-row">
-          {% for menu in menus %}
-          <div class = "menu-col-1">
-            <div class = "menu-item">
-              <div class = "menu-img">
-                <img src = "{{menu.img.url}}" alt = "">
+            <div class = "menu-text">
+              <div class = "price" id="item">
+                <h3>{{menu.item_name}}</h3>
+                <h3>Rs {{menu.price}}</h3>
               </div>
-              <div class = "menu-text">
-                <div class = "price">
-                  <h3>{{menu.item_name}}</h3>
-                  <h3>Rs {{menu.price}}</h3>
-                </div>
-                <p class = "text">{{menu.desc}}</p>
-                <a href = "#cart">Add to cart</a>
-              </div>
+              <p class = "text">{{menu.desc}}</p>
+              <a button onclick="addToCart">Add to cart</a>
             </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- end of menu section -->
+
+
+  <!-- gallery section -->
+  <section class = "padding-y gallery" id = "gallery">
+    <div class = "container">
+      <!-- title -->
+      <div class = "title">
+        <h2>Some pictures from our cafe</h2>
+        <div class = "line center">
+          <div></div>
+          <span><i class="fas fa-images" aria-hidden="true"></i></span>
+          <div></div>
+        </div>
+      </div>
+      <!-- end of title -->
+      <div class = "img-col-1">
+        <div class = "gallery-row">
+          {% for gallery in galleries %}
+          <div class= "box">
+            <img src="{{gallery.gallery_img.url}}" width="600" height="400" border-radius = "4px";>
           </div>
           {% endfor %}
         </div>
       </div>
-    </section>
-    <!-- end of menu section -->
+        
+    </div>
 
+  </section>
 
-    <!-- gallery section -->
-    <section class = "padding-y gallery" id = "gallery">
+  <!-- contact section -->
+  <section class = "padding-y contact" id = "contact"> 
+    <div class = "container">
+      <!-- title -->
+      <div class = "title">
+        <h2>Keep In Touch</h2>
+        <div class = "line center">
+          <div></div>
+          <span><i class="fa fa-envelope-square" aria-hidden="true" aria-hidden="true"></i></span>
+          <div></div>
+        </div>
+      </div>
+      <!-- end of title -->
+      <div class = "contact-row-1">
+        <form class = "contact-form" action="#contact" method="post">
+         
+          <input type = "text" name="contact-name" class = "form-control" placeholder="Your Name">
+          <input type = "email" name="contact-email" class = "form-control" placeholder="Your Email">
+          <textarea rows = "5" name="contact-message" class = "form-control" placeholder="Message"></textarea>
+          <input type = "submit" class = "form-submit-btn" value = "send message">
+        </form>
+      </div>
+    </div>
+
+    <div class = "contact-info">
       <div class = "container">
-        <!-- title -->
-        <div class = "title">
-          <h2>Some pictures from our cafe</h2>
-          <div class = "line center">
-            <div></div>
-            <span><i class="fas fa-images" aria-hidden="true"></i></span>
-            <div></div>
+        <div class = "contact-row-2">
+          <div class = "contact-col-1">
+            <h2>Contact Detail</h2>
+            <ul>
+              <li>Lakeside, Baidam-6 Pokhara</li>
+              <li>Kaski, Nepal 33700</li>
+              <li>Contact: +977-061-590999</li>
+              <li>Email: sweetdelight@gmail.com</li>
+              
+            </ul>
           </div>
-        </div>
-        <!-- end of title -->
-        <div class = "img-col-1">
-
-          <div class = "gallery-row">
-            {% for gallery in galleries %}
-            <div class= "box">
-              <img src="{{gallery.gallery_img.url}}" width="600" height="400" border-radius = "4px";>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-          
-      </div>
-
-    </section>
-
-
-
-    <!-- contact section -->
-    <section class = "padding-y contact" id = "contact"> 
-      <div class = "container">
-        <!-- title -->
-        <div class = "title">
-          <h2>Keep In Touch</h2>
-          <div class = "line center">
-            <div></div>
-            <span><i class="fa fa-envelope-square" aria-hidden="true" aria-hidden="true"></i></span>
-            <div></div>
-          </div>
-        </div>
-        <!-- end of title -->
-        <div class = "contact-row-1">
-          <form class = "contact-form">
-            <input type = "text" class = "form-control" placeholder="Your Name">
-            <input type = "email" class = "form-control" placeholder="Your Email">
-            <textarea rows = "5" class = "form-control" placeholder="Message"></textarea>
-            <input type = "submit" class = "form-submit-btn" value = "send message">
-          </form>
-        </div>
-      </div>
-
-      <div class = "contact-info">
-        <div class = "container">
-          <div class = "contact-row-2">
-            <div class = "contact-col-1">
-              <h2>Contact Detail</h2>
-              <ul>
-                <li>Lakeside, Baidam-6 Pokhara</li>
-                <li>Kaski, Nepal 33700</li>
-                <li>Contact: +977-061-590999</li>
-                <li>Email: sweetdelight@gmail.com</li>
-                
-              </ul>
-            </div>
-            <div class = "contact-col-2">
-              <h2>Connect With Us</h2>
-              <p class = "text"></p>
-              <ul class = "center">
-                <li class = "center">
-                  <a href = "#">
-                    <i class = "fab fa-facebook-f"></i>
-                  </a>
-                </li>
-                <li class = "center">
-                  <a href = "#">
-                    <i class = "fab fa-twitter"></i>
-                  </a>
-                </li>
-                <li class = "center">
-                  <a href = "#">
-                    <i class = "fab fa-instagram"></i>
-                  </a>
-                </li>
-                <li class = "center">
-                  <a href = "#">
-                    <i class = "fab fa-pinterest"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div class = "contact-col-2">
+            <h2>Connect With Us</h2>
+            <p class = "text"></p>
+            <ul class = "center">
+              <li class = "center">
+                <a href = "#">
+                  <i class = "fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class = "center">
+                <a href = "#">
+                  <i class = "fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class = "center">
+                <a href = "#">
+                  <i class = "fab fa-instagram"></i>
+                </a>
+              </li>
+              <li class = "center">
+                <a href = "#">
+                  <i class = "fab fa-pinterest"></i>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    </section>
-    <!-- end of contact section -->
+    </div>
+  </section>
+  <!-- end of contact section -->
 
+    {% endblock content %}
     
-
     <!-- footer -->
-    <footer>
-      <p class = "text">Copyright & copy; Sweet Delight Website 2021.</p>
-    </footer>
-    <!-- end of footer -->
-
-
-    <!-- jQuery -->
-    <script src = "{% static 'assets/jquery/jquery-3.5.1.js' %}"></script>
-    <!-- Fontawesome js -->
-    <script src = "{% static 'assets/font-awesome/all.js' %}"></script>
-    <!-- custom js file -->
-    <script src="{% static 'js/script.js' %}"></script>
-  </body>
-</html>
+    
