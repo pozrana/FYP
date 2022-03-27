@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'main',
+    'cart',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,9 +79,9 @@ WSGI_APPLICATION = 'Sweet_Delight.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sweetdelightdb',
+        'NAME': 'poojadb',
         'USER': 'root',
-        'PASSWORD':'october25',
+        'PASSWORD':'root',
         'PORT': 3306,
         'HOST': '127.0.0.1',
     }

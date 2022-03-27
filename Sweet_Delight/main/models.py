@@ -6,8 +6,9 @@ from django.db import models
 #hat belongs to Model class
 class FoodMenu(models.Model):
     img = models.ImageField(upload_to = 'pics')
-    item_name = models.CharField(max_length = 100)
-    price = models.IntegerField()
+    item_name = models.CharField(max_length = 100, null=True)
+    price = models.FloatField()
+    digital = models.BooleanField(default=False, null=True, blank=False)
     desc = models.TextField()
 
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-    {% block content %}
+{% block content %}
     <!-- banner section -->
     <section class = "banner" id= "home" >
       <ul class = "banner-slider">
@@ -175,10 +175,10 @@
             <div class = "menu-text">
               <div class = "price" id="item">
                 <h3>{{menu.item_name}}</h3>
-                <h3>Rs {{menu.price}}</h3>
+                <h3>Rs {{menu.price|floatformat:2}}</h3>
               </div>
               <p class = "text">{{menu.desc}}</p>
-              <a button onclick="addToCart">Add to cart</a>
+              <a data-product={{menu.id}} data-action="add" class="update-cart" href="">Add to cart</a>
             </div>
           </div>
         </div>
@@ -240,52 +240,10 @@
       </div>
     </div>
 
-    <div class = "contact-info">
-      <div class = "container">
-        <div class = "contact-row-2">
-          <div class = "contact-col-1">
-            <h2>Contact Detail</h2>
-            <ul>
-              <li>Lakeside, Baidam-6 Pokhara</li>
-              <li>Kaski, Nepal 33700</li>
-              <li>Contact: +977-061-590999</li>
-              <li>Email: sweetdelight@gmail.com</li>
-              
-            </ul>
-          </div>
-          <div class = "contact-col-2">
-            <h2>Connect With Us</h2>
-            <p class = "text"></p>
-            <ul class = "center">
-              <li class = "center">
-                <a href = "#">
-                  <i class = "fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class = "center">
-                <a href = "#">
-                  <i class = "fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class = "center">
-                <a href = "#">
-                  <i class = "fab fa-instagram"></i>
-                </a>
-              </li>
-              <li class = "center">
-                <a href = "#">
-                  <i class = "fab fa-pinterest"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </section>
   <!-- end of contact section -->
 
-    {% endblock content %}
-    
-    <!-- footer -->
+{% endblock content %}
+
     
