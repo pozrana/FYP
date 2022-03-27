@@ -4,15 +4,31 @@ from django.core.mail import send_mail
 from . models import FoodMenu, ImageGallery
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from cart.models import *
 
 # Create your views here.
 def index(request):
+
+    if request.user.is_authenticated:
+        # accessing customer
+        customer = request.user.customer
+        # get the customer order or create it
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        # get the items attached to that orders
+        items = order.orderitem_set.all()
+        # pass into every single cart
+        cartItems = order.get_cart_items
+    else:
+        # for guest user
+        items = []
+        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+        cartItems = order['get_cart_items']
+
     menus = FoodMenu.objects.all()
     galleries = ImageGallery.objects.all()
-
-    return render(request, 'index.html', {'menus': menus, 'galleries': galleries})
-
+    context = {'menus': menus, 'galleries': galleries, 'cartItems': cartItems}
     
+    return render(request, 'index.html', context)
 
 
 def register(request):

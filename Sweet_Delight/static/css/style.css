@@ -40,6 +40,12 @@ button{
     text-transform: uppercase;
     font-weight: 500;
 }
+
+.cnt-shop{
+    padding: 1rem 0;
+
+}
+
 .container{
     width: 94%;
     margin: 0 auto;
@@ -217,6 +223,19 @@ h1, h2, h3, h4, h5, h6{
 }
 .service-item h3{
     font-weight: 400;
+}
+
+/* cart */
+.cart-row{
+    background-color: var(--snow);
+}
+.cart-item{
+    text-align: center;
+    margin: 1.2rem 0;
+    padding: 1.6rem 0;
+}
+.cart-item h3{
+    font-weight: 400;   
 }
 
 /* openings */
@@ -437,6 +456,13 @@ footer{
     }
     .service-item p{
         width: 100%;
+    }
+    /* cart */
+    .cart-row{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 2rem;
+        background-color: var(--snow);
     }
     /* menu */
     .menu-row{
