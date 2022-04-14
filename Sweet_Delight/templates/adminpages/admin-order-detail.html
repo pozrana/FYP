@@ -1,0 +1,71 @@
+{% extends 'adminpages/admin-base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<!-- menu section -->
+<section class="padding-y" id = "cart">
+    <div class = "container">
+        <div class = "checkout-row" style="grid-template-columns: 2fr 2fr;">
+          <div class = "col-checkout" id="form-wrapper">
+            <h3 style="color: #996633; font-weight: 500; 
+            border-bottom:1px solid #996633;">Order Detail</h3>
+              <div class="text">
+                  <p><span style="font-weight: bold;">Order ID:   </span> #ORDER_{{  ord_obj.id}} </p>
+                  <p><span style="font-weight: bold;">Order Status: </span>{{ord_obj.order_status}} </p>
+                  <p><span style="font-weight: bold;">Ordered On: </span>  {{ord_obj.created_at}}({{ord_obj.created_at|timesince}} ago) </p>
+                  <p><span style="font-weight: bold;">Customer Information: </span> By {{ord_obj.ordered_by}}, {{ord_obj.mobile}}, {{ord_obj.email}} </p>
+                  <p><span style="font-weight: bold;">Shipping Address: </span> By {{ord_obj.shipping_address}}</p>
+                  <p><span style="font-weight: bold;">Payment Information: </span> Using {{ord_obj.payment_method}}
+                    ({% if ord_obj.payment_completed %}
+                    Payment Completed
+                    {% else %}
+                    Not Paid
+                    {% endif %})</p>
+
+              </div>
+          </div>
+          <div class = "col-checkout">
+            <h3 style="color: #996633; font-weight: 500;
+            border-bottom:1px solid #996633;">Ordered Items</h3>
+            <div class="box-element">
+          
+              <div class="order-row">
+                <div style="flex:1"><strong>SN</strong></div>
+                <div style="flex:1"><strong>Item</strong></div>
+                <div style="flex:1"><strong>Rate</strong></div>
+                <div style="flex:1"><strong>Quantity</strong></div>
+                <div style="flex:1"><strong>Subtotal</strong></div>
+              </div>
+              {% for cp in ord_obj.cart.cartproduct_set.all %}
+              <div class="order-row">
+                <div style="flex:1"><p>{{forloop.counter}}</p></div>
+                <div style="flex:1"><p>{{cp.product.item_name}}({{cp.product.id}})</p></div>
+                <div style="flex:1"><p>{{cp.rate}}</p></div>
+                <div style="flex:1"><p>{{cp.quantity}}</p></div>
+                <div style="flex:1"><p>Rs. {{cp.subtotal}}</p></div>
+              </div>
+              {% endfor %}
+              <h5>Total: Rs. {{ord_obj.total|floatformat:2|intcomma}}</h5>
+            </div>
+          </div>
+        </div>
+        <form action="{% url 'adminorderstatuschange' ord_obj.id %}" method="POST">
+            {% csrf_token %}
+            <select name="status">
+                {% for i, j in allstatus %}
+                <option value="{{i}}" {% if i == ord_obj.order_status %}selected{% endif %}>{{j}}</option>
+                {% endfor %}
+            </select>
+            <button class="button btn-blue" style="padding: 6px;">Change</button>
+            
+        </form>
+    </div>
+  </section>
+  <!-- end of menu section -->
+
+
+
+{% endblock content %}
+    
+    

@@ -7,79 +7,78 @@ from django.db import models
 from django.contrib.auth.models import User
 from main.models import FoodMenu
 
+class Admin(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=50)
+    image = models.ImageField(upload_to="admins")
+    mobile = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.user.username
+
 # cascade - if one relations' item is deleted, another linked must be deleted
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-    name = models.CharField(max_length=200, null=True)
+    full_name = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
+    joined_on = models.DateTimeField(auto_now_add=True, null=True)
+    
 
     def __str__(self) -> str:
-        return self.name
+        return self.full_name
+
+class Cart(models.Model):
+    customer = models.ForeignKey(
+        Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    total = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "Cart: " + str(self.id)
 
 
-# cutomer can have many orders, complete - if complete is false, we need to continue add items on cart
-# if it is True, we add items on different order
-# set_null - if customer deleted, we do not need to delete order 
+class CartProduct(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    product = models.ForeignKey(FoodMenu, on_delete=models.CASCADE)
+    rate = models.PositiveIntegerField()
+    quantity = models.PositiveIntegerField()
+    subtotal = models.PositiveIntegerField()
+
+    def __str__(self):
+        return "Cart: " + str(self.cart.id) + " CartProduct: " + str(self.id)
+
+ORDER_STATUS = (
+    ("Order Received", "Order Received"),
+    ("Order Processing", "Order Processing"),
+    ("On the way", "On the way"),
+    ("Order Completed", "Order Completed"),
+    ("Order Canceled", "Order Canceled"),
+)
+
+METHOD = (
+    ("Cash On Delivery", "Cash On Delivery"),
+    ("Khalti", "Khalti"),
+    
+)
+
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
-    date_ordered = models.DateTimeField(auto_now_add=True)
-    complete = models.BooleanField(default=False, null=True, blank=False)
-    transaction_id = models.CharField(max_length=200, null=True)
+    cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
+    ordered_by = models.CharField(max_length=200)
+    shipping_address = models.CharField(max_length=200)
+    mobile = models.CharField(max_length=10)
+    email = models.EmailField(null=True, blank=True)
+    subtotal = models.PositiveIntegerField()
+    discount = models.PositiveIntegerField()
+    total = models.PositiveIntegerField()
+    order_status = models.CharField(max_length=50, choices=ORDER_STATUS)
+    created_at = models.DateTimeField(auto_now_add=True)
+    payment_method = models.CharField(
+        max_length=20, choices=METHOD, default="Cash On Delivery")
+    payment_completed = models.BooleanField(
+        default=False, null=True, blank=True)
 
-    def __str__(self) -> str:
-        return str(self.id)
-    
-    # order shipping status
-    @property
-    def shipping(self):
-        shipping = False
-        orderitems = self.orderitem_set.all()
-        for i in orderitems:
-            if i.product.digital == False: 
-                shipping = True
-        return shipping
-    
-    @property
-    def get_cart_total(self):
-        #querry all child order items
-        orderitems = self.orderitem_set.all()
-        #add all order items in total
-        total = sum([item.get_total for item in orderitems])
-        return total
-
-    @property
-    def get_cart_items(self):
-        #querry all child order items
-        orderitems = self.orderitem_set.all()
-        #add all order items in cart
-        total = sum([item.quantity for item in orderitems])
-        return total
-
-# items that are needed to add on our order with many to one relationship
-# order is a cart and orderitem is the item within a cart
-# cart can have multiple order items
-class OrderItem(models.Model):
-    product = models.ForeignKey(FoodMenu, on_delete=models.SET_NULL, blank=True, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
-    quantity = models.IntegerField(default=0, null=True, blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-
-    @property
-    def get_total(self):
-        total = self.product.price * self.quantity 
-        return total
-
-class ShippingAddress(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
-    address = models.CharField(max_length=200, null=True)
-    city = models.CharField(max_length=200, null=True)
-    state = models.CharField(max_length=200, null=True)
-    zipcode = models.CharField(max_length=200, null=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self) -> str:
-        return self.address
+    def __str__(self):
+        return "Order: " + str(self.id)
 
 
 

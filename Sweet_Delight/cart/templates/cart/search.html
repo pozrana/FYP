@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- menu section -->
+  <section class="padding-y" id = "cart">
+    <div class = "container">
+        <div class = "checkout-row" style="grid-template-columns: 2fr; margin-top: 2rem;">
+          <div class = "col-checkout" id="form-wrapper">
+            <h3 style="
+            border-bottom:1px solid #996633;">Search Results for 
+            <span style="color:#996633;">"{{request.GET.keyword}}"</span></h3>
+          </div>
+        </div>
+        <div class = "menu-row">
+            {% for result in results %}
+            <div class = "menu-col-1">
+              <div class = "menu-item">
+                <div class = "menu-img">
+                  <img src = "{{result.img.url}}" alt = "">
+                </div>
+                <div class = "menu-text">
+                  <div class = "price" id="item">
+                    <h3>{{result.item_name}}</h3>
+                    <!-- <h3>Rs {{menu.price|floatformat:2}}</h3> -->
+                  </div>
+                  <p class = "text">{{result.desc}}</p>
+                  <a class="update-cart" href="{% url 'addtocart' result.id %}">Add to cart</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+    </div>
+  </section>
+
+
+
+{% endblock content %}
+    
+    

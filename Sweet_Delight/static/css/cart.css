@@ -16,6 +16,29 @@
     color: white;
 }
 
+.button{
+    border: none;
+    color: white;
+    padding: 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.btn-blue{
+    background-color: #008CBA;
+}
+
+.btn-orange{
+    background-color: orange;
+}
+
+.btn-red{
+    background-color: #f44336;;
+}
+
 .cart-item a{
     margin-left: 8rem;
     display: block;
@@ -73,9 +96,20 @@
 
 }
 
-.hidden{
-    display: none!important;
-}
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+  
+  .pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
 
 .order-summary-list{
     display: grid;

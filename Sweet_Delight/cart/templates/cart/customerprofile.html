@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- menu section -->
+  <section class="padding-y" id = "cart">
+    <div class = "container">
+        <div class = "checkout-row" style="grid-template-columns: 2fr 2fr; margin-top: 2rem;">
+          <div class = "col-checkout" id="form-wrapper">
+            <h3 style="color: #996633; font-weight: 500; 
+            border-bottom:1px solid #996633;">Detail Information</h3>
+              <div class="text">
+                  <p><span style="font-weight: bold;">Name: </span>{{customer.full_name}} </p>
+                  <p><span style="font-weight: bold;">Email: </span>{{customer.email}} </p>
+                  <p><span style="font-weight: bold;">Username: </span>{{customer.user.username}} </p>
+                  <p><span style="font-weight: bold;">Joined On: </span>{{customer.joined_on}} </p>
+              </div>
+          </div>
+          <div class = "col-checkout">
+            <h3 style="color: #996633; font-weight: 500;
+            border-bottom:1px solid #996633;">Previous Orders</h3>
+            <div class="box-element">
+          
+              <div class="order-row">
+                <div style="flex:1"><strong>Order ID</strong></div>
+                <div style="flex:1"><strong>Amount</strong></div>
+                <div style="flex:2"><strong>Ordered On</strong></div>
+                <div style="flex:1"><strong>Status</strong></div>
+              </div>
+              {% for order in orders %}
+              <div class="order-row">
+                <div style="flex:1"><p><a style="color: blue;" href="{% url 'customerorderdetail' order.pk  %}"> #ORDER_{{order.id}}</a></p></div>
+                <div style="flex:1"><p>Rs.{{order.total}}</p></div>
+                <div style="flex:2"><p>{{order.created_at|timesince}} ago</p></div>
+                <div style="flex:1"><p>{{order.order_status}}</p></div>
+              </div>
+              {% endfor %}
+      
+            </div>
+            
+          </div>
+        </div>
+    </div>
+  </section>
+  <!-- end of menu section -->
+
+
+
+{% endblock content %}
+    
+    

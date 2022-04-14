@@ -1,0 +1,46 @@
+{% extends 'adminpages/admin-base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+ <!-- menu section -->
+ <section class="padding-y" id = "cart">
+    <div class = "container">
+        <div class = "checkout-row" style="grid-template-columns: 2fr;">
+          <div class = "col-checkout">
+            <h3 style="color: #996633; font-weight: 500;
+            border-bottom:1px solid #996633;">All Orders</h3>
+            <div class="box-element">
+          
+              <div class="order-row">
+                <div style="flex:1"><strong>SN</strong></div>
+                <div style="flex:1"><strong>Order ID</strong></div> 
+                <div style="flex:1"><strong>Customer</strong></div>
+                <div style="flex:1"><strong>Ordered On</strong></div>
+                <div style="flex:1"><strong>Amount</strong></div>
+                <div style="flex:1"><strong>Status</strong></div>
+                
+              </div>
+              {% for order in allorders %}
+              <div class="order-row">
+                <div style="flex:1">{{forloop.counter}}</div>
+                <div style="flex:1"><p><a style="color: blue;" href="{% url 'adminorderdetail' order.id  %}"> #ORDER_{{order.id}}</a></p></div>
+                <div style="flex:1">{{order.ordered_by}}</div>
+                <div style="flex:1">{{order.created_at}}</div>
+                <div style="flex:1">{{order.total|floatformat:2}}</div>
+                <div style="flex:1">{{order.order_status}}</div>
+              </div>
+              {% endfor %}
+      
+            </div>
+            
+          </div>
+        </div>
+    </div>
+  </section>
+  <!-- end of menu section -->
+
+
+{% endblock content %}
+    
+    

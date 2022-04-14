@@ -4,30 +4,18 @@ from django.core.mail import send_mail
 from . models import FoodMenu, ImageGallery
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from django.core.paginator import Paginator
 from cart.models import *
 
 # Create your views here.
 def index(request):
 
-    if request.user.is_authenticated:
-        # accessing customer
-        customer = request.user.customer
-        # get the customer order or create it
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        # get the items attached to that orders
-        items = order.orderitem_set.all()
-        # pass into every single cart
-        cartItems = order.get_cart_items
-    else:
-        # for guest user
-        items = []
-        order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
-        cartItems = order['get_cart_items']
-
-    menus = FoodMenu.objects.all()
+    all_products = FoodMenu.objects.all().order_by("-id")
+    paginator = Paginator(all_products, 4)
+    page_number = request.GET.get('page')
+    menus = paginator.get_page(page_number)
     galleries = ImageGallery.objects.all()
-    context = {'menus': menus, 'galleries': galleries, 'cartItems': cartItems}
-    
+    context = {'menus': menus, 'galleries': galleries}
     return render(request, 'index.html', context)
 
 
