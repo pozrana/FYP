@@ -13,13 +13,13 @@
 
     <!-- sign-in form -->
     <div class="form sign-in">
-      <h2>Sign In</h2>
+      <h2>Admin Sign In</h2>
 
       <form action ="" method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <button class="submit" type="submit">Sign In</button>
-        <p style="text-align: center;">or don't have account? <a href="{% url 'customerregistration' %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">Register Here</a></p>
+        <button class="submit" type="submit">Sign In as Admin</button>
+        
         {% if error %}
         <li style="color: red;">{{error}}</li>
         {% endif %}

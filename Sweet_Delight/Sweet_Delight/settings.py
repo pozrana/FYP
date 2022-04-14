@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.humanize',
     'django.contrib.staticfiles',
 ]
 
@@ -79,7 +80,7 @@ WSGI_APPLICATION = 'Sweet_Delight.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'poojadb',
+        'NAME': 'sweetdb',
         'USER': 'root',
         'PASSWORD':'root',
         'PORT': 3306,

@@ -7,8 +7,8 @@ from django.db import models
 class FoodMenu(models.Model):
     img = models.ImageField(upload_to = 'pics')
     item_name = models.CharField(max_length = 100, null=True)
+    slug = models.SlugField(unique=True, null=True)
     price = models.FloatField()
-    digital = models.BooleanField(default=False, null=True, blank=False)
     desc = models.TextField()
 
 

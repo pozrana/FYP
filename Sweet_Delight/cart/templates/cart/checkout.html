@@ -6,38 +6,24 @@
   <!-- menu section -->
   <section class="padding-y" id = "cart">
     <div class = "container">
-        <div class = "checkout-row">
+        <div class = "checkout-row" style="margin-top: 2rem;">
           <div class = "col-checkout" id="form-wrapper">
             
-            <form id="form">
-              <div id="user-info">
-                <input type = "text" name="name" placeholder="Full Name">
-                <input type = "email" name="email" placeholder="Email">
-
-              </div>
-              
-              <div id="shipping-info">
+            <form id="form" action="" method="POST">
+              {% csrf_token %}
                 <h3 style="color: #996633; font-weight: 500;">Shipping Information</h3>
-                <input type = "text" name="address" placeholder="Address">
-                <input type = "text" name="city" placeholder="City">
-                <input type = "text" name="state" placeholder="State">
-                <input type = "text" name="zipcode" placeholder="Zip Code">
-              </div>
+                {{form.as_p}}
+              
               <input id="form-button" type="submit" value = "Continue">
             </form>
             
           </div>
-          <div class = "col-checkout hidden" id="payment-info">
-            <h3>Payment Options</h3>
-            <button id="make-payment" class="payment-btn">Make Payment</button>
-
-          </div>
           <div class = "col-checkout">
             <div class = "cnt-shop" style="border-bottom:1px solid #996633;" >
-              <a class="btn-cnt-shop" href="{% url 'home' %}">&#8592; Back To Cart</a>
+              <a class="btn-cnt-shop" href="{% url 'mycart' %}">&#8592; Back To Cart</a>
             </div>
             <h3 style="border-bottom:1px solid #996633;">Order Summary</h3>
-            {% for item in items %}
+            {% for item in cart.cartproduct_set.all %}
             <div class="order-summary-list">
               <div class = "row-image-summary">
                 <img src="{{item.product.img.url}}">
@@ -57,104 +43,14 @@
             </div>
             {% endfor %}
             <h5>Items: {{order.get_cart_items}}</h5>
-            <h5>Total: Rs.{{order.get_cart_total|floatformat:2}}</h5>
+            <h5>Total: Rs.{{cart.total|floatformat:2}}</h5>
           </div>
         </div>
     </div>
   </section>
   <!-- end of menu section -->
 
-<script>
-  // hiding shipping form
-  var shipping = '{{order.shipping}}'
-  var total = '{{order.get_cart_total}}'
 
-  if(shipping == 'False'){
-    document.getElementById('shipping-info').innerHTML = ''
-
-  }
-
-  if(user != 'AnonymousUser'){
-    document.getElementById('user-info').innerHTML = ''
-  }
-
-  if (shipping == 'False' && user != 'AnonymousUser'){
-    // hide entire form if user is logged in and shipping is false
-    document.getElementById('form-wrapper').classList.add("hidden");
-    // show payment if logged in user wants to buy an item that does not require shipping
-    document.getElementById('payment-info').classList.remove("hidden");
-
-  }
-
-
-  // when the form is submitted, 
-  // we want to remove the class of 'hidden' from the payment option and 
-  // add the class of 'hidden' to the button
-
-  var form = document.getElementById('form')
-  form.addEventListener('submit', function(e){
-    e.preventDefault()
-    console.log('Form Submitted...')
-    document.getElementById('form-button').classList.add("hidden");
-    document.getElementById('payment-info').classList.remove("hidden");
-  })
-
-  document.getElementById('make-payment').addEventListener('click', function(e){
-    submitFormData()
-    
-  })
-
-  function submitFormData(){
-    console.log('Payment button clicked')
-
-    var userFormData = {
-      'name':null,
-      'email':null,
-      'total':total,
-    }
-
-    var shippingInfo = {
-      'address':null,
-      'city':null,
-      'state':null,
-      'zipcode':null,
-    }
-
-    if(shipping != 'False'){
-      shippingInfo.address = form.address.value
-      shippingInfo.city = form.city.value
-      shippingInfo.state = form.state.value
-      shippingInfo.zipcode = form.zipcode.value
-
-    }
-
-    if(user == 'AnonymousUser'){
-      userFormData.name = form.name.value
-      userFormData.email = form.email.value
-      
-    }
-
-    // send POST data 
-    var url = "/carts/process_order/"
-    fetch(url, {
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'X-CSRFToken':csrftoken,
-      },
-      body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Success:', data);
-      alert('Transcation completed');
-      window.location.href = "{% url 'home' %}"
-
-    })
-  }
-
-
-</script>
 
 {% endblock content %}
     

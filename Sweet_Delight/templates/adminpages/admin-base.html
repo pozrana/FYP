@@ -33,55 +33,19 @@
         <div class = "container">
           <div class = "brand-and-toggler">
             <a class = "navbar-brand">
-              <img src = "{% static 'assets/images/logo.png' %}" alt = "logo">
-              <h2>Sweet Delight</h2>
+                <!-- <img src = "{% static 'assets/images/logo.png' %}" alt = "logo"> -->
+              <h2>Sweet Delight - Admin</h2>
             </a>
             <button type = "button" id = "navbar-toggler">
               <i class = "fas fa-bars"></i>
             </button>
-            
-              <form style="margin-left: 6rem;" action="{% url 'search' %}" method="GET">
-                <input type="text" name="keyword" placeholder="Search.." required>
-                <button class="button btn-blue" style="padding: 4px; float: right;">Search</button>
-              </form>
-              
-            
           </div>
           <div class = "navbar-collapse">
             <ul class = "navbar-nav">
-              <li><a  href = "{% url 'home' %}">Home</a></li>
-              <!-- <li><a  href = "#about">About</a></li> -->
-              <!-- <li><a  href = "#services">Event</a></li> -->
-              <!-- <li><a  href = "#openings">Opening</a></li> -->
-              <li><a  href = "#menu">Menu</a></li>
-              <!-- <li><a  href = "#gallery">Gallery</a></li>
-              <li><a  href = "#contact">Contact</a></li> -->
-              
-              
-              <li>
-                <a href = "{% url 'mycart' %}">
-                  <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                </a>
-                <span style="color: #996633;">{{cartItems}}</span>
-              </li>
-              {% if request.user.customer %}
-              Welcome, {{request.user.username}}
-              <li><a  href = "{% url 'customerprofile' %}">My Profile</a></li>
-              <li><a  href = "{% url 'customerlogout' %}">Logout</a></li>
-              {% else %}
-              <li>
-                <a  href = "{% url 'customerregistration' %}">
-                  <i class="fa fa-user-plus" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href = "{% url 'customerlogin' %}">
-                  <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
-                </a>
-              </li>
-              {% endif %}
+              <li><a  href = "{% url 'adminhome' %}">Home</a></li>
+              <li><a  href = "{% url 'adminorderlist' %}">All Orders</a></li>
+              <li><a  href = "{% url 'home' %}" target="blank">Visit Site</a></li>
             </ul>
-            
           </div>
         </div>
       </nav>
@@ -155,4 +119,4 @@
         <script src="{% static 'js/cart.js' %}"></script>
         
     </body>
-  </html>
+  </html> 
